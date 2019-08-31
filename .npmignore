@@ -1,0 +1,7 @@
+src
+.vscode
+.editorconfig
+tsconfig.json
+*.spec*
+yarn-error*
+jest.config*

@@ -1,0 +1,7 @@
+.*
+!.circleci
+!.gitignore
+!.npmignore
+/lib
+/node_modules
+yarn-error*
