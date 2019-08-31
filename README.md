@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/nawordar/ts-when.svg?style=svg)](https://circleci.com/gh/nawordar/ts-when)
 
 <h1 align="center">ts-when</h1>
 
