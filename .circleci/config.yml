@@ -3,9 +3,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:9.7.1
+      - image: circleci/node:10.16.3
 
-    working_directory: ~/whenswitch
+    working_directory: ~/ts-when
 
     steps:
       - checkout
