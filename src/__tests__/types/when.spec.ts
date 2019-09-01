@@ -66,7 +66,7 @@ describe("`when.match` method", () => {
 
     it("infers the correct type, when using custom matcher", () => {
 
-        const { getObjectVolume, cubeType } = inspectWithPreamble(`
+        const { getObjectVolume } = inspectWithPreamble(`
             import when from "./src/when";
 
             interface SpaceObject { x: number; y: number; z: number; }
@@ -112,6 +112,8 @@ describe("`when.match` method", () => {
         });
 
         expect(getObjectVolume).toEqual("number | null");
+
+        // TODO: Find a way to get local variable type using intspector
         // expect(cubeType).toEqual("CubeSchema");
         // expect(sphereType).toEqual("SphereSchema");
         // expect(defaultType).toEqual("SpaceObject");
