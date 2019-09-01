@@ -1,6 +1,4 @@
-
 import when from "../when";
-import { IsSubtype, IsType, StaticCheck } from "./helpers";
 
 describe("'when.true' syntax with a simple return type", () => {
   const getDrinkPrice = (drink: "Pepsi" | "Coke" | "Orangina"): number =>
@@ -8,8 +6,6 @@ describe("'when.true' syntax with a simple return type", () => {
       .true(() => drink === "Coke", 1.5)
       .true(() => drink === "Pepsi", 1.8)
       .else(2.0);
-
-  StaticCheck<IsType<number, ReturnType<typeof getDrinkPrice>>>();
 
   it("returns value if assertion is true", () => {
     expect(getDrinkPrice("Coke")).toEqual(1.5);
@@ -27,8 +23,6 @@ describe("'when.true' syntax with a union return-type", () => {
       .true(drink === "Coke", 1.5)
       .true(drink === "Pepsi", true)
       .else("Free");
-
-  StaticCheck<IsSubtype<number | boolean | string, ReturnType<typeof getDrinkPrice>>>();
 
   it("returns value if matches an expression", () => {
     expect(getDrinkPrice("Coke")).toEqual(1.5);
@@ -49,8 +43,6 @@ describe("'when.true' syntax with a function as `is` return value", () => {
       .true(action.type === "DECREMENT", () => true)
       .else(() => null);
 
-  StaticCheck<IsSubtype<number | boolean | null, ReturnType<typeof apply>>>();
-
   it("returns value if matches an expression", () => {
     expect(apply({ type: "INCREMENT" })).toEqual(2);
     expect(apply({ type: "DECREMENT" })).toEqual(true);
@@ -68,10 +60,8 @@ describe("'when.true' syntax with assertion wrapped in thunk", () => {
       .true(obj.isBuffer, 1)
       .else(2);
 
-  StaticCheck<IsSubtype<number, ReturnType<typeof isBuffer>>>();
-
   it("unwraps the thunk", () => {
-    expect(isBuffer({isBuffer: () => true})).toBe(1);
-    expect(isBuffer({isBuffer: () => false})).toBe(2);
+    expect(isBuffer({ isBuffer: () => true })).toBe(1);
+    expect(isBuffer({ isBuffer: () => false })).toBe(2);
   });
 });

@@ -1,5 +1,5 @@
 import when from "../when";
-import { IsSubtype, IsType, StaticCheck } from "./helpers";
+import { IsType, StaticCheck } from "./helpers";
 
 describe("with a simple return-type", () => {
   const getDrinkPrice = (drink: "Pepsi" | "Coke" | "Orangina"): number =>
@@ -7,8 +7,6 @@ describe("with a simple return-type", () => {
       .is("Coke", 1.5)
       .is("Pepsi", 1.8)
       .else(2.0);
-
-  StaticCheck<IsType<number, ReturnType<typeof getDrinkPrice>>>();
 
   it("returns value if matches an expression", () => {
     expect(getDrinkPrice("Coke")).toEqual(1.5);
@@ -21,17 +19,11 @@ describe("with a simple return-type", () => {
 });
 
 describe("with a union return-type", () => {
-  const getDrinkPrice = (
-    drink: "Pepsi" | "Coke" | "Orangina",
-  ): number | string | boolean =>
+  const getDrinkPrice = (drink: "Pepsi" | "Coke" | "Orangina") =>
     when(drink)
       .is("Coke", 1.5)
       .is("Pepsi", true)
       .else("Free");
-
-  StaticCheck<
-    IsSubtype<number | boolean | string, ReturnType<typeof getDrinkPrice>>
-  >();
 
   it("returns value if matches an expression", () => {
     expect(getDrinkPrice("Coke")).toEqual(1.5);
@@ -51,8 +43,6 @@ describe("with a function as `is` return value", () => {
       .is("INCREMENT", () => 2)
       .is("DECREMENT", () => true)
       .else(() => null);
-
-  StaticCheck<IsSubtype<number | boolean | null, ReturnType<typeof apply>>>();
 
   it("returns value if matches an expression", () => {
     expect(apply({ type: "INCREMENT" })).toEqual(2);
@@ -120,8 +110,6 @@ describe("match method", () => {
           StaticCheck<IsType<SpaceObject, typeof _>>();
           return null;
         });
-
-    StaticCheck<IsSubtype<number | null, ReturnType<typeof getObjectVolume>>>();
 
     const cube: Cube = { x: 0, y: 0, z: 0, width: 4 };
     expect(getObjectVolume(cube)).toBe(64);
