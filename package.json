@@ -30,9 +30,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kube/when-switch/issues"
+    "url": "https://github.com/nawordar/ts-when/issues"
   },
-  "homepage": "https://github.com/kube/when-switch#readme",
+  "homepage": "https://github.com/nawordar/ts-when#readme",
   "devDependencies": {
     "@types/jest": "^24.0.0",
     "intspector": "^1.0.1",
