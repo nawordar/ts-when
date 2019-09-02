@@ -22,12 +22,6 @@
     "url": "https://github.com/nawordar",
     "email": "czarek@drozak.net"
   },
-  "contributors": [
-    {
-      "name": "Chris Feijoo",
-      "url": "https://github.com/kube"
-    }
-  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nawordar/ts-when/issues"
