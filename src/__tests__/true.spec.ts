@@ -65,3 +65,38 @@ describe("'when.true' syntax with assertion wrapped in thunk", () => {
     expect(isBuffer({ isBuffer: () => false })).toBe(2);
   });
 });
+
+describe("'when.true' mixed with when(subject) syntax", () => {
+
+  it("should allow to call method is() after method true()", () => {
+    const whenTrue = (subject: any, bool: boolean) =>
+      when(subject)
+        .true(bool, true);
+
+    expect(whenTrue({}, true)).toHaveProperty("is");
+  });
+
+  it("should allow to call method true() after method true()", () => {
+    const whenTrue = (subject: any, bool: boolean) =>
+      when(subject)
+        .true(bool, true);
+
+    expect(whenTrue({}, true)).toHaveProperty("true");
+  });
+
+  it("should allow to call method true() after method is()", () => {
+    const whenIs = (subject: string) =>
+      when(subject)
+        .is("funny", 420);
+
+    expect(whenIs("whatever")).toHaveProperty("true");
+  });
+
+  it("should allow to call method is() after method is()", () => {
+    const whenIs = (subject: string) =>
+      when(subject)
+        .is("funny", 420);
+
+    expect(whenIs("whatever")).toHaveProperty("is");
+  });
+});

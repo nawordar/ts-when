@@ -6,15 +6,22 @@ export interface Matcher<T, R extends T> {
 export interface When<T, V> {
   is: <U extends T, W>(
     matcher: U,
-    returnValue: ((inputValue: U) => W) | W,
+    value: ((inputValue: U) => W) | W,
   ) => When<T, V | W>;
 
   match: <U extends T, W>(
     matcher: Matcher<T, U>,
-    returnValue: ((inputValue: U) => W) | W,
+    value: ((inputValue: U) => W) | W,
   ) => When<T, V | W>;
 
-  else: <W>(returnValue: ((inputValue: T) => W) | W) => V | W;
+  true: <W>(
+    assertion: (() => boolean) | boolean,
+    value: (() => W) | W,
+  ) => When<T, V | W>;
+
+  else: <W>(
+    returnValue: ((inputValue: T) => W) | W,
+  ) => V | W;
 }
 
 export interface WhenSwitch {
@@ -36,6 +43,7 @@ export interface True<T> {
 const resolve = (resolvedValue: any): When<any, any> => ({
   is: () => resolve(resolvedValue),
   match: () => resolve(resolvedValue),
+  true: () => resolve(resolvedValue),
   else: () => resolvedValue,
 });
 
@@ -51,6 +59,11 @@ export const when = (<T>(expr: T): When<T, never> => ({
   match: (matcher, value) =>
     matcher.test(expr)
       ? resolve(typeof value === "function" ? (value as (x: any) => any)(expr) : value)
+      : when(expr),
+
+  true: (assertion, value) =>
+    (typeof assertion === "function" ? assertion() : assertion)
+      ? resolve(typeof value === "function" ? (value as (() => any))() : value)
       : when(expr),
 
   else: (defaultValue) =>
