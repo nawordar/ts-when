@@ -98,10 +98,12 @@ describe("match method", () => {
 
     const getObjectVolume = (object: SpaceObject) =>
       when(object)
+        // tslint:disable-next-line: no-shadowed-variable : I don't understand what this is shadowing
         .match(CubeSchema, (cube) => {
           StaticCheck<IsType<Cube, typeof cube>>();
           return cube.width ** 3;
         })
+        // tslint:disable-next-line: no-shadowed-variable
         .match(SphereSchema, (sphere) => {
           StaticCheck<IsType<Sphere, typeof sphere>>();
           return Math.PI * 3 / 4 * sphere.radius ** 3;

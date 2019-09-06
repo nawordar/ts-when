@@ -1,0 +1,10 @@
+{
+    "exclude": [
+        "**/*.spec.ts",
+        "src/__tests__/**/*"
+    ],
+    "mode": "modules",
+    "entryPoint": "\"when\"",
+    "excludeNotExported": true,
+    "out": "docs"
+}
