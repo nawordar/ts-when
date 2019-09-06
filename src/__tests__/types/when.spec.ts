@@ -1,5 +1,5 @@
-import { inspectWhen, importWhen } from "./utils";
-import { inspect, inspectWithPreamble, setOptions } from "intspector";
+import { inspectWhen } from "./utils";
+import { inspectWithPreamble } from "intspector";
 
 describe("`when.is` with a simple return-type", () => {
 
