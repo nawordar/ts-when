@@ -26,6 +26,17 @@ const getDrinkPrice = drink =>
     .else(2.0)
 ```
 
+### Assertion Matching
+
+You can return a value when given assertion is correct
+
+```ts
+const x = when
+  .true(someVariable === true, "some variable is true")
+  .else("some variable is false")
+
+```
+
 ### Structural Matching
 
 You can use `match` method with any object exposing a `test` method.
