@@ -83,8 +83,8 @@ describe("'when.true' mixed with when(subject) syntax", () => {
       when(subject)
         .is("some string", 42);
 
-    expect(whenIs("whatever")).toHaveProperty("is");
-    expect(whenIs("whatever")).toHaveProperty("true");
-    expect(whenIs("whatever")).toHaveProperty("match");
+    expect(whenIs("some string")).toHaveProperty("is");
+    expect(whenIs("some string")).toHaveProperty("true");
+    expect(whenIs("some string")).toHaveProperty("match");
   });
 });
