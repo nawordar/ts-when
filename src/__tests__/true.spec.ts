@@ -71,7 +71,8 @@ describe("'when.true' mixed with when(subject) syntax", () => {
   it("should allow to call all methods after method true()", () => {
     const whenTrue = (subject: any, bool: boolean) =>
       when(subject)
-        .true(bool, true);
+        .true(bool, true)
+        .true(!bool, false);
 
     expect(whenTrue({}, true)).toHaveProperty("is");
     expect(whenTrue({}, true)).toHaveProperty("true");
@@ -86,5 +87,15 @@ describe("'when.true' mixed with when(subject) syntax", () => {
     expect(whenIs("some string")).toHaveProperty("is");
     expect(whenIs("some string")).toHaveProperty("true");
     expect(whenIs("some string")).toHaveProperty("match");
+  });
+
+  it("should allow to use assertion as function", () => {
+    const whenWithFun = (subject: any, boolFun: () => boolean) =>
+      when(subject)
+        .true(boolFun, () => true)
+        .else(() => false);
+
+    expect(whenWithFun({}, () => true)).toEqual(true);
+    expect(whenWithFun({}, () => false)).toEqual(false);
   });
 });
