@@ -65,8 +65,6 @@ describe("`when()` match method", () => {
         .match(/^([a-z]+_[a-z]+)+$/, "SnakeCase")
         .else("Unknown");
 
-    StaticCheck<IsType<string, ReturnType<typeof getCaseStyle>>>();
-
     expect(getCaseStyle("Hello")).toEqual("UpperCamelCase");
     expect(getCaseStyle("HelloWorld")).toEqual("UpperCamelCase");
     expect(getCaseStyle("helloWorld")).toEqual("LowerCamelCase");
