@@ -13,4 +13,5 @@ const getWhen = (): When => {
 
 const when = getWhen();
 
+export { typedWhen } from "./typed/typedWhen";
 export default when;

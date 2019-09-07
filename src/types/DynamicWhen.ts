@@ -1,22 +1,19 @@
 import { Matcher } from "./Matcher";
+import { DynamicWhenOrElse } from "./DynamicWhenOrElse";
 
-export interface WhenInstance<T, V> {
+export interface DynamicWhen<T, V> {
   is: <U extends T, W>(
     matcher: U,
     value: ((inputValue: U) => W) | W,
-  ) => WhenInstance<T, V | W>;
+  ) => DynamicWhenOrElse<T, V | W>;
 
   match: <U extends T, W>(
     matcher: Matcher<T, U>,
     value: ((inputValue: U) => W) | W,
-  ) => WhenInstance<T, V | W>;
+  ) => DynamicWhenOrElse<T, V | W>;
 
   true: <W>(
     assertion: (() => boolean) | boolean,
     value: (() => W) | W,
-  ) => WhenInstance<T, V | W>;
-
-  else: <W>(
-    returnValue: ((inputValue: T) => W) | W,
-  ) => V | W;
+  ) => DynamicWhenOrElse<T, V | W>;
 }
