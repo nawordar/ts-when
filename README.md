@@ -7,7 +7,7 @@
 <h1 align="center">ts-when</h1>
 
 <h3 align="center">
-  JavaScript functional implementation of switch/case, written in TypeScript
+  JavaScript functional implementation of switch/case written in TypeScript
 </h3>
 
 ## Note
