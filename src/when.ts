@@ -1,10 +1,10 @@
 import { When } from "./types/When";
-import whenFunction from "./whenFunction";
 import { trueMethod } from "./trueMethod";
+import dynamicWhen from "./dynamic/dynamicWhen";
 
 const getWhen = (): When => {
 
-  const whenFactory = whenFunction as When;
+  const whenFactory = dynamicWhen as When;
 
   whenFactory.true = trueMethod;
 
