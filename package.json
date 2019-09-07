@@ -1,7 +1,7 @@
 {
   "name": "ts-when",
   "version": "0.4.1",
-  "description": "Functional implementation of switch/case, inspired by Ruby case/when.",
+  "description": "JavaScript functional implementation of switch/case written in TypeScript",
   "main": "./lib/when.js",
   "types": "./lib/when.d.ts",
   "scripts": {

@@ -1,11 +1,13 @@
 [![CircleCI](https://circleci.com/gh/nawordar/ts-when.svg?style=shield)](https://circleci.com/gh/nawordar/ts-when)
 [![codecov](https://codecov.io/gh/nawordar/ts-when/branch/master/graph/badge.svg)](https://codecov.io/gh/nawordar/ts-when)
 [![Maintainability](https://api.codeclimate.com/v1/badges/acbaf24c14a3478dc54b/maintainability)](https://codeclimate.com/github/nawordar/ts-when/maintainability)
+[![devDependencies Status](https://david-dm.org/nawordar/ts-when/dev-status.svg)](https://david-dm.org/nawordar/ts-when?type=dev)
+[![NPM version](https://badge.fury.io/js/ts-when.svg)](http://badge.fury.io/js/ts-when)
 
 <h1 align="center">ts-when</h1>
 
 <h3 align="center">
-  JavaScript functional implementation of switch/case, inspired by Ruby case/when.
+  JavaScript functional implementation of switch/case written in TypeScript
 </h3>
 
 ## Note
