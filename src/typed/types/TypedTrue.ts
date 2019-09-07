@@ -1,6 +1,6 @@
-export interface TypedTrue<T> {
+import { TypedStaticWhen } from "./TypedStaticWhen";
 
-    /** Tests assertion and returns _value_ if assertion is true. */
-    true: (assertion: (() => boolean) | boolean, returns: (() => T) | T) => TypedTrue<T>;
+export interface TypedTrue<T> extends TypedStaticWhen<T> {
+
     else: (returns: (() => T) | T) => T;
 }
