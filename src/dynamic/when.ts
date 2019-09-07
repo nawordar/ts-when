@@ -6,7 +6,7 @@ import { is, match, trueImpl, elseImpl } from "./methods";
 /**
  * Tests an object against multiple expressions.
  */
-export const dynamicWhen = <T>(subject: T): WhenInstance<T, never> => ({
+export const when = <T>(subject: T): WhenInstance<T, never> => ({
 
     is: is(subject),
 
@@ -17,4 +17,4 @@ export const dynamicWhen = <T>(subject: T): WhenInstance<T, never> => ({
     else: elseImpl(subject),
 });
 
-export default dynamicWhen;
+export default when;
