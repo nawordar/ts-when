@@ -1,5 +1,6 @@
-
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.5
 jobs:
   build:
     docker:
@@ -9,16 +10,18 @@ jobs:
 
     steps:
       - checkout
-
       - restore_cache:
           keys:
-          - dependencies-cache-{{ checksum "package.json" }}
-
+            - dependencies-cache-{{ checksum "package.json" }}
       - run: yarn
-
       - save_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
-
-      - run: yarn test
+      - run:
+          name: "Run Jest and Collect Coverage Reports"
+          command: yarn test:codecov
+      - store_artifacts:
+          path: coverage
+      - codecov/upload:
+          file: coverage/*.json
