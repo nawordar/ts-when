@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/nawordar/ts-when.svg?style=svg)](https://circleci.com/gh/nawordar/ts-when)
+[![CircleCI](https://circleci.com/gh/nawordar/ts-when.svg?style=shield)](https://circleci.com/gh/nawordar/ts-when)
 [![codecov](https://codecov.io/gh/nawordar/ts-when/branch/master/graph/badge.svg)](https://codecov.io/gh/nawordar/ts-when)
 
 <h1 align="center">ts-when</h1>
