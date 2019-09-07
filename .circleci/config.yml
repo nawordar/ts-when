@@ -1,4 +1,6 @@
 version: 2
+orbs:
+  codecov: codecov/codecov@1.0.2
 jobs:
   build:
     docker:
@@ -21,3 +23,5 @@ jobs:
           command: yarn test:codecov
       - store_artifacts:
           path: coverage
+      - codecov/upload:
+          file: coverage/coverage-final.json
