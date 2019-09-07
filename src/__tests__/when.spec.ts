@@ -1,41 +1,41 @@
 import when from "../when";
 import { IsType, StaticCheck } from "./helpers";
 
-describe("with a simple return-type", () => {
+describe("`when()` syntax with a simple return-type", () => {
   const getDrinkPrice = (drink: "Pepsi" | "Coke" | "Orangina"): number =>
     when(drink)
       .is("Coke", 1.5)
       .is("Pepsi", 1.8)
       .else(2.0);
 
-  it("returns value if matches an expression", () => {
+  it("should return value if matches an expression", () => {
     expect(getDrinkPrice("Coke")).toEqual(1.5);
     expect(getDrinkPrice("Pepsi")).toEqual(1.8);
   });
 
-  it("returns default value if no match", () => {
+  it("should return default value if no match", () => {
     expect(getDrinkPrice("Orangina")).toEqual(2.0);
   });
 });
 
-describe("with a union return-type", () => {
+describe("`when()` syntax with a union return-type", () => {
   const getDrinkPrice = (drink: "Pepsi" | "Coke" | "Orangina") =>
     when(drink)
       .is("Coke", 1.5)
       .is("Pepsi", true)
       .else("Free");
 
-  it("returns value if matches an expression", () => {
+  it("should return value if matches an expression", () => {
     expect(getDrinkPrice("Coke")).toEqual(1.5);
     expect(getDrinkPrice("Pepsi")).toEqual(true);
   });
 
-  it("returns default value if no match", () => {
+  it("should return default value if no match", () => {
     expect(getDrinkPrice("Orangina")).toEqual("Free");
   });
 });
 
-describe("with a function as `is` return value", () => {
+describe("`when()` syntax with a function as `is` return value", () => {
   interface Action { type: string; }
 
   const apply = (action: Action) =>
@@ -44,19 +44,20 @@ describe("with a function as `is` return value", () => {
       .is("DECREMENT", () => true)
       .else(() => null);
 
-  it("returns value if matches an expression", () => {
+  it("should return value if matches an expression", () => {
     expect(apply({ type: "INCREMENT" })).toEqual(2);
     expect(apply({ type: "DECREMENT" })).toEqual(true);
   });
 
-  it("returns default value if no match", () => {
+  it("should return default value if no match", () => {
     expect(apply({ type: "Hello" })).toBeNull();
     expect(apply({ type: "World" })).toBeNull();
   });
 });
 
-describe("match method", () => {
-  it("returns first match", () => {
+describe("`when()` match method", () => {
+
+  it("should return first match", () => {
     const getCaseStyle = (text: string) =>
       when(text)
         .match(/^([A-Z][a-z]*)+$/, "UpperCamelCase")
@@ -74,7 +75,7 @@ describe("match method", () => {
     expect(getCaseStyle("Hello_World")).toEqual("Unknown");
   });
 
-  it("permits pattern matching using custom matcher", () => {
+  it("should permit pattern matching using custom matcher", () => {
     interface SpaceObject { x: number; y: number; z: number; }
     type Cube = SpaceObject & { width: number };
     type Sphere = SpaceObject & { radius: number };
