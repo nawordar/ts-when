@@ -7,12 +7,12 @@ describe("'when.true' syntax with a simple return type", () => {
       .true(() => drink === "Pepsi", 1.8)
       .else(2.0);
 
-  it("returns value if assertion is true", () => {
+  it("should return value if assertion is true", () => {
     expect(getDrinkPrice("Coke")).toEqual(1.5);
     expect(getDrinkPrice("Pepsi")).toEqual(1.8);
   });
 
-  it("returns default value if any of assertions is true", () => {
+  it("should return default value if any of assertions is true", () => {
     expect(getDrinkPrice("Orangina")).toEqual(2.0);
   });
 });
@@ -24,12 +24,12 @@ describe("'when.true' syntax with a union return-type", () => {
       .true(drink === "Pepsi", true)
       .else("Free");
 
-  it("returns value if matches an expression", () => {
+  it("should return value if matches an expression", () => {
     expect(getDrinkPrice("Coke")).toEqual(1.5);
     expect(getDrinkPrice("Pepsi")).toEqual(true);
   });
 
-  it("returns default value if no match", () => {
+  it("should return default value if no match", () => {
     expect(getDrinkPrice("Orangina")).toEqual("Free");
   });
 });
@@ -43,12 +43,12 @@ describe("'when.true' syntax with a function as `is` return value", () => {
       .true(action.type === "DECREMENT", () => true)
       .else(() => null);
 
-  it("returns value if matches an expression", () => {
+  it("should return value if matches an expression", () => {
     expect(apply({ type: "INCREMENT" })).toEqual(2);
     expect(apply({ type: "DECREMENT" })).toEqual(true);
   });
 
-  it("returns default value if no match", () => {
+  it("should return default value if no match", () => {
     expect(apply({ type: "Hello" })).toBeNull();
     expect(apply({ type: "World" })).toBeNull();
   });
@@ -60,7 +60,7 @@ describe("'when.true' syntax with assertion wrapped in thunk", () => {
       .true(obj.isBuffer, 1)
       .else(2);
 
-  it("unwraps the thunk", () => {
+  it("should unwrap the thunk", () => {
     expect(isBuffer({ isBuffer: () => true })).toBe(1);
     expect(isBuffer({ isBuffer: () => false })).toBe(2);
   });
@@ -71,7 +71,8 @@ describe("'when.true' mixed with when(subject) syntax", () => {
   it("should allow to call all methods after method true()", () => {
     const whenTrue = (subject: any, bool: boolean) =>
       when(subject)
-        .true(bool, true);
+        .true(bool, true)
+        .true(!bool, false);
 
     expect(whenTrue({}, true)).toHaveProperty("is");
     expect(whenTrue({}, true)).toHaveProperty("true");
@@ -86,5 +87,15 @@ describe("'when.true' mixed with when(subject) syntax", () => {
     expect(whenIs("some string")).toHaveProperty("is");
     expect(whenIs("some string")).toHaveProperty("true");
     expect(whenIs("some string")).toHaveProperty("match");
+  });
+
+  it("should allow to use assertion as function", () => {
+    const whenWithFun = (subject: any, boolFun: () => boolean) =>
+      when(subject)
+        .true(boolFun, () => true)
+        .else(() => false);
+
+    expect(whenWithFun({}, () => true)).toEqual(true);
+    expect(whenWithFun({}, () => false)).toEqual(false);
   });
 });

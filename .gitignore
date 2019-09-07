@@ -4,4 +4,5 @@
 !.npmignore
 /lib
 /node_modules
+/coverage
 yarn-error*

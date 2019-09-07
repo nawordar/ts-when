@@ -1,4 +1,6 @@
-[![CircleCI](https://circleci.com/gh/nawordar/ts-when.svg?style=svg)](https://circleci.com/gh/nawordar/ts-when)
+[![CircleCI](https://circleci.com/gh/nawordar/ts-when.svg?style=shield)](https://circleci.com/gh/nawordar/ts-when)
+[![codecov](https://codecov.io/gh/nawordar/ts-when/branch/master/graph/badge.svg)](https://codecov.io/gh/nawordar/ts-when)
+[![Maintainability](https://api.codeclimate.com/v1/badges/acbaf24c14a3478dc54b/maintainability)](https://codeclimate.com/github/nawordar/ts-when/maintainability)
 
 <h1 align="center">ts-when</h1>
 
