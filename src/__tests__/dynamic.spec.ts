@@ -35,6 +35,7 @@ describe("`when()` syntax with a union return-type", () => {
   });
 });
 
+
 describe("`when()` syntax with a function as `is` return value", () => {
   interface Action { type: string; }
 
