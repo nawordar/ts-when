@@ -1,7 +1,7 @@
-import { staticResolve } from "./staticResolve";
 import { callOrReturn } from "../helpers";
+import { StaticElse, StaticNotNull, StaticTrue } from "../types/StaticMethods";
+import { staticResolve } from "./staticResolve";
 import { staticWhen } from "./staticWhen";
-import { StaticTrue, StaticNotNull, StaticElse } from "../types/StaticMethods";
 
 export const staticTrue: StaticTrue<any> = (
     assertion,

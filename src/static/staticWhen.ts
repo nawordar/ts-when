@@ -1,5 +1,5 @@
 import { StaticWhen } from "../types/StaticWhen";
-import { staticTrue, staticNotNull, staticElse } from "./staticMethods";
+import { staticElse, staticNotNull, staticTrue } from "./staticMethods";
 
 export const staticWhen = <T>(): StaticWhen<T> => ({
 

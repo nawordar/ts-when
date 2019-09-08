@@ -1,5 +1,5 @@
-import { StaticWhen } from "../types/StaticWhen";
 import { callOrReturn } from "../helpers";
+import { StaticWhen } from "../types/StaticWhen";
 
 /**
  * Exposes same API as `true`, but just propagates a resolved value,

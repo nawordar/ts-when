@@ -1,7 +1,7 @@
-import { dynamicResolve } from "./dynamicResolve";
 import { callOrReturn } from "../helpers";
+import { DynamicElse, DynamicIs, DynamicMatch, DynamicNotNull, DynamicTrue } from "../types/DynamicMethods";
+import { dynamicResolve } from "./dynamicResolve";
 import dynamicWhenOrElse from "./dynamicWhenOrElse";
-import { DynamicIs, DynamicMatch, DynamicTrue, DynamicNotNull, DynamicElse } from "../types/DynamicMethods";
 
 export const dynamicIs = <T, W>(subject: T): DynamicIs<T, W> => (
     that,
@@ -11,9 +11,9 @@ export const dynamicIs = <T, W>(subject: T): DynamicIs<T, W> => (
         : dynamicWhenOrElse(subject);
 
 export const dynamicMatch = <T, W>(subject: T): DynamicMatch<T, W> => (
-    that,
+    matcher,
     returns,
-) => that.test(subject)
+) => matcher.test(subject)
         ? dynamicResolve(returns, subject)
         : dynamicWhenOrElse(subject);
 

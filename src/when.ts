@@ -1,6 +1,6 @@
-import { When } from "./types/When";
 import dynamicWhen from "./dynamic/dynamicWhen";
-import { staticTrue, staticNotNull } from "./static/staticMethods";
+import { staticNotNull, staticTrue } from "./static/staticMethods";
+import { When } from "./types/When";
 
 const getWhen = (): When => {
 

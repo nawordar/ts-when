@@ -1,5 +1,5 @@
 import { DynamicWhen } from "./DynamicWhen";
-import { StaticTrue, StaticNotNull } from "./StaticMethods";
+import { StaticNotNull, StaticTrue } from "./StaticMethods";
 
 export interface When {
 
