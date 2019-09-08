@@ -1,30 +1,22 @@
-import { Matcher } from "./Matcher";
+import { DynamicElse, DynamicIs, DynamicMatch, DynamicNotNull, DynamicTrue } from "./DynamicMethods";
 
 export interface DynamicWhen<T, V> {
 
-  is: <U extends T, W>(
-    matcher: U,
-    value: ((inputValue: U) => W) | W,
-  ) => DynamicWhenOrElse<T, V | W>;
+  /** Checks if an object is equal to a given value */
+  is: DynamicIs<T, V>;
 
-  match: <U extends T, W>(
-    matcher: Matcher<T, U>,
-    value: ((inputValue: U) => W) | W,
-  ) => DynamicWhenOrElse<T, V | W>;
+  /** Checks if an object matches RegExp or custom matcher */
+  match: DynamicMatch<T, V>;
 
-  true: <W>(
-    assertion: (() => boolean) | boolean,
-    value: (() => W) | W,
-  ) => DynamicWhenOrElse<T, V | W>;
+  /** Checks if a given assertion is true */
+  true: DynamicTrue<T, V>;
 
-  notNull: <U extends T, W>(
-    returns: ((matched: NonNullable<U>) => W) | W,
-  ) => DynamicWhenOrElse<T, V | W>;
+  /** Checks if an object is neither null nor undefined */
+  notNull: DynamicNotNull<T, V>;
 }
 
 export interface DynamicWhenOrElse<T, V> extends DynamicWhen<T, V> {
 
-  else: <W>(
-    returns: ((matched: T) => W) | W,
-  ) => V | W;
+  /** Returns value if all the previous checks failed */
+  else: DynamicElse<T, V>;
 }

@@ -6,9 +6,9 @@ export interface When {
   /** Tests an object against multiple expressions and returns the result. */
   <T>(expr: T): DynamicWhen<T, never>;
 
-  /** Tests assertion and returns value if assertion is true. */
+  /** Checks if a given assertion is true */
   true: StaticTrue<never>;
 
-  /** Returns value if it is not null */
+  /** Checks if an object is neither null nor undefined */
   notNull: StaticNotNull<never>;
 }

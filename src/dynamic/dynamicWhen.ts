@@ -1,9 +1,7 @@
 import { DynamicWhen } from "../types/DynamicWhen";
-import { dynamicIs, dynamicMatch, dynamicTrue, dynamicElse, dynamicNotNull } from "./dynamicMethods";
+import { dynamicIs, dynamicMatch, dynamicNotNull, dynamicTrue } from "./dynamicMethods";
 
-/**
- * Tests an object against multiple expressions.
- */
+/** Tests an object against multiple expressions and returns the result. */
 export const dynamicWhen = <T>(subject: T): DynamicWhen<T, never> => ({
 
     is: dynamicIs(subject),
