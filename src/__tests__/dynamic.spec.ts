@@ -1,7 +1,7 @@
 import when from "../when";
 import { IsType, StaticCheck } from "./helpers";
 
-describe("`when()` syntax with a simple return-type", () => {
+describe("`when()` syntax with a simple return type", () => {
   const getDrinkPrice = (drink: "Pepsi" | "Coke" | "Orangina"): number =>
     when(drink)
       .is("Coke", 1.5)

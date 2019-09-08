@@ -1,5 +1,5 @@
 import { TypedDynamicWhen } from "../types/TypedDynamicWhen";
-import { dynamicIs, dynamicMatch, dynamicTrue, dynamicElse } from "../../dynamic/dynamicMethods";
+import { dynamicIs, dynamicMatch, dynamicTrue } from "../../dynamic/dynamicMethods";
 
 export const typedDynamicWhen = <S, T>(subject: S): TypedDynamicWhen<S, T> => ({
     is: dynamicIs(subject),
