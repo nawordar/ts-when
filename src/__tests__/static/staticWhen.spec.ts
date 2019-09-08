@@ -1,4 +1,5 @@
-import when from "../when";
+import when from "../../when";
+import { IsType, StaticCheck } from "../helpers";
 
 describe("'when.true' syntax with a simple return type", () => {
   const getDrinkPrice = (drink: "Pepsi" | "Coke" | "Orangina"): number =>
@@ -97,5 +98,38 @@ describe("'when.true' mixed with when(subject) syntax", () => {
 
     expect(whenWithFun({}, () => true)).toEqual(true);
     expect(whenWithFun({}, () => false)).toEqual(false);
+  });
+});
+
+describe("when.notNull()", () => {
+
+  it("should return correct value when not wrapped in function", () => {
+    const valueOrDefault = (value: any, defaultValue: any) =>
+      when
+        .notNull(value, (matched) => matched)
+        .else(defaultValue);
+
+    expect(valueOrDefault(null, "default")).toBe("default");
+    expect(valueOrDefault("not null", "default")).toBe("not null");
+  });
+
+  it("should return correct value when wrapped in function", () => {
+    const valueOrDefault = (value: any, defaultValue: any) =>
+      when
+        .notNull(value, (matched) => matched)
+        .else(() => defaultValue);
+
+    expect(valueOrDefault(null, "default")).toBe("default");
+    expect(valueOrDefault("not null", "default")).toBe("not null");
+  });
+
+  it("should yield callback with non-nullable value", () => {
+    const valueOrDefault = (value: string | null, defaultValue: any) =>
+      when
+        .notNull(value, (matched) => {
+          StaticCheck<IsType<string, typeof matched>>();
+          return matched;
+        })
+        .else(() => defaultValue);
   });
 });

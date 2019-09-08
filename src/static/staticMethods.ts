@@ -1,17 +1,25 @@
-import { True } from "../types/True";
 import { staticResolve } from "./staticResolve";
-import { callOrReturn } from "../types/Callable";
+import { callOrReturn, isNotNull } from "../helpers";
+import { staticWhen } from "./staticWhen";
 
-export const staticTrue = <T>(
+export const staticTrue = <W>(
     assertion: (() => boolean) | boolean,
-    returns: (() => T) | T,
-): True<T> =>
-    callOrReturn(assertion)
+    returns: (() => W) | W,
+) => callOrReturn(assertion)
         ? staticResolve(returns)
-        : ({
+        : staticWhen();
 
-            true: staticTrue,
+export const staticNotNull = <T, W>(
+    nullable: (() => T) | T,
+    returns: ((matched: NonNullable<T>) => W) | W,
+) => {
+    const resolved = callOrReturn(nullable);
 
-            // tslint:disable-next-line: no-shadowed-variable
-            else: (returns) => callOrReturn(returns),
-        });
+    return resolved != null
+        ? staticResolve(returns, resolved)
+        : staticWhen();
+};
+
+export const staticElse = <W>(
+    returns: (() => W) | W,
+) => callOrReturn(returns);

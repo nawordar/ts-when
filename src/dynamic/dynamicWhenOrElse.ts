@@ -1,10 +1,10 @@
-import { DynamicWhen } from "../types/DynamicWhen";
+import { DynamicWhenOrElse } from "../types/DynamicWhen";
 import { dynamicIs, dynamicMatch, dynamicTrue, dynamicElse, dynamicNotNull } from "./dynamicMethods";
 
 /**
  * Tests an object against multiple expressions.
  */
-export const dynamicWhen = <T>(subject: T): DynamicWhen<T, never> => ({
+export const dynamicWhenOrElse = <T>(subject: T): DynamicWhenOrElse<T, never> => ({
 
     is: dynamicIs(subject),
 
@@ -13,6 +13,8 @@ export const dynamicWhen = <T>(subject: T): DynamicWhen<T, never> => ({
     true: dynamicTrue(subject),
 
     notNull: dynamicNotNull(subject),
+
+    else: dynamicElse(subject),
 });
 
-export default dynamicWhen;
+export default dynamicWhenOrElse;
