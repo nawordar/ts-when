@@ -1,17 +1,18 @@
 import { staticResolve } from "./staticResolve";
-import { callOrReturn, isNotNull } from "../helpers";
+import { callOrReturn } from "../helpers";
 import { staticWhen } from "./staticWhen";
+import { StaticTrue, StaticNotNull, StaticElse } from "../types/StaticMethods";
 
-export const staticTrue = <W>(
-    assertion: (() => boolean) | boolean,
-    returns: (() => W) | W,
+export const staticTrue: StaticTrue<any> = (
+    assertion,
+    returns,
 ) => callOrReturn(assertion)
         ? staticResolve(returns)
         : staticWhen();
 
-export const staticNotNull = <T, W>(
-    nullable: (() => T) | T,
-    returns: ((matched: NonNullable<T>) => W) | W,
+export const staticNotNull: StaticNotNull<any> = (
+    nullable,
+    returns,
 ) => {
     const resolved = callOrReturn(nullable);
 
@@ -20,6 +21,6 @@ export const staticNotNull = <T, W>(
         : staticWhen();
 };
 
-export const staticElse = <W>(
-    returns: (() => W) | W,
+export const staticElse: StaticElse<any> = (
+    returns,
 ) => callOrReturn(returns);

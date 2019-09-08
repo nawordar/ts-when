@@ -1,12 +1,11 @@
+import { StaticTrue, StaticNotNull, StaticElse } from "./StaticMethods";
+
 export interface StaticWhen<T> {
 
   /** Tests assertion and returns _value_ if assertion is true. */
-  true: <U>(assertion: (() => boolean) | boolean, value: (() => U) | U) => StaticWhen<T | U>;
+  true: StaticTrue<T>;
 
-  notNull: <U>(
-    nullable: (() => U) | U,
-    returns: ((matched: NonNullable<U>) => T) | T,
-  ) => StaticWhen<T | U>;
+  notNull: StaticNotNull<T>;
 
-  else: <U>(returnValue: (() => U) | U) => T | U;
+  else: StaticElse<T>;
 }

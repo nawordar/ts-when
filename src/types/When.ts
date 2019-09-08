@@ -1,5 +1,6 @@
 import { DynamicWhen } from "./DynamicWhen";
 import { StaticWhen } from "./StaticWhen";
+import { StaticTrue, StaticNotNull } from "./StaticMethods";
 
 export interface When {
 
@@ -7,10 +8,7 @@ export interface When {
   <T>(expr: T): DynamicWhen<T, never>;
 
   /** Tests assertion and returns _value_ if assertion is true. */
-  true: <T>(assertion: (() => boolean) | boolean, returns: (() => T) | T) => StaticWhen<T>;
+  true: StaticTrue<never>;
 
-  notNull: <T, U>(
-    nullable: (() => U) | U,
-    returns: ((matched: NonNullable<U>) => T) | T,
-  ) => StaticWhen<T>;
+  notNull: StaticNotNull<never>;
 }

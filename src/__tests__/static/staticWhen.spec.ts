@@ -124,12 +124,13 @@ describe("when.notNull()", () => {
   });
 
   it("should yield callback with non-nullable value", () => {
-    const valueOrDefault = (value: string | null, defaultValue: any) =>
+    const valueOrDefault = (value: string | null, defaultValue: number) =>
       when
         .notNull(value, (matched) => {
           StaticCheck<IsType<string, typeof matched>>();
           return matched;
         })
+        .true(true, {key: "value"})
         .else(() => defaultValue);
   });
 });
