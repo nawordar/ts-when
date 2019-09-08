@@ -12,7 +12,8 @@
             true,
             "spaces",
             2
-        ]
+        ],
+        "no-unused-variable": true
     },
     "rulesDirectory": []
 }
