@@ -130,7 +130,7 @@ describe("when.notNull()", () => {
           StaticCheck<IsType<string, typeof matched>>();
           return matched;
         })
-        .true(true, {key: "value"})
+        .true(true, { key: "value" })
         .else(() => defaultValue);
   });
 });
