@@ -2,8 +2,8 @@
 *
 
 # Allow following files and directories:
-/lib
-LICENSE
-README.md
-CHANGELOG.md
-package.json
+!/lib
+!LICENSE
+!README.md
+!CHANGELOG.md
+!package.json
