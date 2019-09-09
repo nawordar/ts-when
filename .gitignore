@@ -6,9 +6,9 @@
 !.gitignore
 !.npmignore
 
-# Allow only pnpm's lock file
+# Allow only yarn lock file
 *lock*
-!pnpm-lock.yaml
+!yarn.lock
 
 # These directories should never be committed
 /lib
