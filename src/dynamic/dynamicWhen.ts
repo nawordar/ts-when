@@ -1,10 +1,8 @@
-import { WhenInstance } from "../types/WhenInstance";
-import { dynamicIs, dynamicMatch, dynamicTrue, dynamicElse } from "./dynamicMethods";
+import { DynamicWhen } from "../types/DynamicWhen";
+import { dynamicIs, dynamicMatch, dynamicNotNull, dynamicTrue } from "./dynamicMethods";
 
-/**
- * Tests an object against multiple expressions.
- */
-export const when = <T>(subject: T): WhenInstance<T, never> => ({
+/** Tests an object against multiple expressions and returns the result. */
+export const dynamicWhen = <T>(subject: T): DynamicWhen<T, never> => ({
 
     is: dynamicIs(subject),
 
@@ -12,7 +10,7 @@ export const when = <T>(subject: T): WhenInstance<T, never> => ({
 
     true: dynamicTrue(subject),
 
-    else: dynamicElse(subject),
+    notNull: dynamicNotNull(subject),
 });
 
-export default when;
+export default dynamicWhen;
