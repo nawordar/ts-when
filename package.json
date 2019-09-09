@@ -1,9 +1,13 @@
 {
   "name": "ts-when",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "JavaScript functional implementation of switch/case written in TypeScript",
   "main": "./lib/when.js",
   "types": "./lib/when.d.ts",
+  "files": [
+    "/lib",
+    "!/**/__tests__"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "jest",

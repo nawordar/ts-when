@@ -1,9 +1,0 @@
-# Disallow everything to transform .npmignore into a whitelist
-*
-
-# Allow following files and directories:
-/lib
-LICENSE
-README.md
-CHANGELOG.md
-package.json
