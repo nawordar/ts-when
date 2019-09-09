@@ -1,10 +1,19 @@
+# Blacklist dotfiles/dotdirectories by default -- they usually should not be committed
 .*
-*lock*
-!pnpm-lock.yaml
-!.circleci
+
+# These are the dotfiles/dotdirectories that should actually be committed
+!/.circleci
 !.gitignore
 !.npmignore
+
+# Allow only pnpm's lock file
+*lock*
+!pnpm-lock.yaml
+
+# These directories should never be committed
 /lib
 /node_modules
 /coverage
+
+# Logs should never be committed
 yarn-error*
