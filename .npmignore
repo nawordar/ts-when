@@ -1,7 +1,9 @@
-src
-.vscode
-.editorconfig
-tsconfig.json
-*.spec*
-yarn-error*
-jest.config*
+# Disallow everything to transform .npmignore into a whitelist
+*
+
+# Allow following files and directories:
+/lib
+LICENSE
+README.md
+CHANGELOG.md
+package.json
