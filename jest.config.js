@@ -4,6 +4,9 @@ module.exports = {
   transform: { "\\.ts$": "ts-jest" },
   moduleFileExtensions: ["ts", "js"],
   globals: {
-    "ts-jest": { diagnostics: true }
-  }
+    "ts-jest": {
+      diagnostics: true,
+      packageJson: "package.json",
+    },
+  },
 };

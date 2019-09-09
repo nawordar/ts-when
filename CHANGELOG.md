@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `notNull()` method
 
+### Changed
+- Switched from `yarn` to `pnpm`.
+  It is recommended for contributors to use `pnpm` and commit `pnpm-lock.yaml` when changing `devDependencies`. 
+
 ## [0.4.1] - 2019-09-05
 ### Added
 - Possibility of using `true` with `when()` function

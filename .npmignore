@@ -2,6 +2,9 @@ src
 .vscode
 .editorconfig
 tsconfig.json
+typedoc.json
+tslint.json
 *.spec*
 yarn-error*
 jest.config*
+*lock*

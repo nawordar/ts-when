@@ -1,4 +1,6 @@
 .*
+*lock*
+!pnpm-lock.yaml
 !.circleci
 !.gitignore
 !.npmignore
