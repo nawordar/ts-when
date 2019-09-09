@@ -1,6 +1,6 @@
 {
   "name": "ts-when",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "JavaScript functional implementation of switch/case written in TypeScript",
   "main": "./lib/when.js",
   "types": "./lib/when.d.ts",
@@ -15,6 +15,7 @@
     "url": "git+https://github.com/nawordar/ts-when.git"
   },
   "keywords": [
+    "util",
     "switch",
     "case",
     "when"
