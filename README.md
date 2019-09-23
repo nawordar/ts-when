@@ -14,9 +14,23 @@
 
 This is a fork of a great library [when-switch] which seems no longer maintained.
 
+Table of contents
+=================
+
+* [ts-when](#ts-when)
+   * [Table of contents](#table-of-contents)
+   * [Usage](#usage)
+      * [Strict Equality](#strict-equality)
+      * [Assertion-based Matching](#assertion-based-matching)
+      * [Structural Matching](#structural-matching)
+      * [Regular Expressions](#regular-expressions)
+      * [Custom Type Guard Matcher](#custom-type-guard-matcher)
+   * [TypeScript](#typescript)
+      * [Union types](#union-types)
+
 ## Usage
 
-You can convert a ts-when use in a functional way, using a single expression:
+You can use ts-when in a functional way, using a single expression:
 
 ### Strict Equality
 
@@ -30,7 +44,7 @@ const getDrinkPrice = drink =>
     .else(2.0)
 ```
 
-### Assertion Matching
+### Assertion-based Matching
 
 You can return a value when given assertion is correct
 
