@@ -23,8 +23,8 @@ Table of contents
       * [Strict Equality](#strict-equality)
       * [Assertion-based Matching](#assertion-based-matching)
       * [Structural Matching](#structural-matching)
-      * [Regular Expressions](#regular-expressions)
-      * [Custom Type Guard Matcher](#custom-type-guard-matcher)
+         * [Regular Expressions](#regular-expressions)
+         * [Custom Type Guard Matcher](#custom-type-guard-matcher)
    * [TypeScript](#typescript)
       * [Union types](#union-types)
 
