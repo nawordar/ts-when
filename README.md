@@ -139,7 +139,7 @@ Here the return type of `getDrinkPrice` expression will be `number | string | bo
 ### Creating custom `when`
 
 Currently new features can only be added by including them in a library or using custom matcher if it's enough for the task.\
-Another problem is than adding new features to the library requires a lot of boilerplate and risks breaking another functionality.
+Another problem is that adding new features to the library requires a lot of boilerplate and risks breaking another functionality.
 
 I am currently trying to solve both problems by adding a '`when` creator':
 ```ts
