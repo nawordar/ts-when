@@ -31,8 +31,6 @@ Table of contents
          * [Custom Type Guard Matcher](#custom-type-guard-matcher)
    * [TypeScript](#typescript)
       * [Union types](#union-types)
-   * [Planned](#planned)
-      * [Creating custom `when`](#creating-custom-when)
 
 ## Usage
 
@@ -137,50 +135,6 @@ const getDrinkPrice = (drink: 'Pepsi' | 'Coke' | 'Orangina') =>
 ```
 
 Here the return type of `getDrinkPrice` expression will be `number | string | boolean`
-
-## Planned
-
-### Creating custom `when`
-
-Currently new features can only be added by including them in a library or using custom matcher if it's enough for the task.\
-Another problem is that adding new features to the library requires a lot of boilerplate and risks breaking another functionality.
-
-I am currently trying to solve both problems by adding a '`when` creator':
-```ts
-const customWhen = createWhen({
-  dynamic: {
-    is: {
-      test: (subject: any, matcher: any) =>  subject === matcher,
-    },
-  },
-  static: {
-    true: {
-      test: (subject: any, matcher: any) =>  subject === matcher,
-    },
-  },
-  hybrid: {
-    matches: {
-      test: (subject, matcher: Matcher) => matcher.test(subject),
-    },
-  },
-});
-```
-Which would then be used as follows:
-```ts
-const x = customWhen(2)
-  .is(2, () => "Two is two!") // createWhen() automatically created method with two arguments
-  // .true() is not available, as it is static-only method
-  .matches(/\d+/, "Two is a number!") // result can always be a lazily evaluated function or a constant
-  .matches("test", /\w+/, "'Test' is a word!") // .matches() can be used either dynamically or statically
-  .else(":(");
-  
-const y = customWhen
-  // .is() is not available, as it is dynamic-only method
-  .true(2, 2, () => "Two is two!")
-  .matches(2, /d+/, "Two is a number!")
-  .else(":(");
-```
-I am now investigating if there are any drawbacks and if Typescript's type system is sufficient for such dynamically created functions.
 
 
 [when-switch]: https://github.com/kube/when-switch
