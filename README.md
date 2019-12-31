@@ -14,6 +14,10 @@
 
 This is a fork of a great library [when-switch] which seems no longer maintained.
 
+If you would like a similar behaviour built in JavaScript, please support the
+[pattern matching proposal](https://github.com/tc39/proposal-pattern-matching)!
+This extension will never be as good as the native support.
+
 Table of contents
 =================
 
